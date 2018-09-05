@@ -1,27 +1,34 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= provide(:title,"Sign Up") %>
+<center>
+<div class="card">
+  <%= form_for(@user) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.text_field :name ,:class => "form-control",placeholder: "Name"%>
+    </div>
+    <div class="form-group">
+      <%= form.text_field :email,:class => "form-control",placeholder: "Email" %>
+    </div>
+    <div class="form-group">
+      <%= form.text_field :password ,:class => "form-control",autocomplete: :off,placeholder: "Password"%>
+    </div>
+    <div class="form-group">
+      <%= form.text_field :password_confirmation ,:class => "form-control",autocomplete: :off,placeholder: "Confirm Password"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
+</center>
