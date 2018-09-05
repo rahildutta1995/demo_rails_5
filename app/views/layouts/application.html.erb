@@ -22,7 +22,13 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="/sign_up">Sign Up</a></li>
-          <li><a href="#">Login</a></li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to "Logout" ,"/logout",method: :delete %>
+            <% else %>
+              <a href="/login">Login</a>
+            <% end %>
+          </li>
           <li><a href="#">Page 3</a></li>
         </ul>
       </div>
@@ -31,6 +37,12 @@
       <div class="alert alert-danger alert-dismissible">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <strong><%= alert %></strong>
+      </div>
+    <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= notice %></strong>
       </div>
     <% end %>
     <%= yield %>
