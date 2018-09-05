@@ -28,7 +28,7 @@
 .main{
 	margin:10px;
 }
-a,a:hover,a:focus{
+.links,.links:hover,.links:focus{
 	text-decoration: none;
 	font-weight: bold;
 	background: white;
