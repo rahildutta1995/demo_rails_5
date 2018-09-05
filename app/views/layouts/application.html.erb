@@ -12,39 +12,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-
-  <body>
-    <nav class="navbar navbar-default">
+  <body >
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
+          <a class="navbar-brand" href="/">WebSiteName</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="/sign_up">Sign Up</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li>
             <% if logged_in? %>
-              <%= link_to "Logout" ,"/logout",method: :delete %>
+              <%= link_to "Logout" ,"/logout",method: :delete%>
             <% else %>
-              <a href="/login">Login</a>
+              <%= link_to "Login" ,"/login" %>
             <% end %>
           </li>
-          <li><a href="#">Page 3</a></li>
         </ul>
+
       </div>
     </nav>
-    <% if alert.present? %>
-      <div class="alert alert-danger alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><%= alert %></strong>
-      </div>
-    <% end %>
-    <% if notice.present? %>
-      <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><%= notice %></strong>
-      </div>
-    <% end %>
-    <%= yield %>
+    <div class="main">
+      <% if alert.present? %>
+        <div class="alert alert-danger alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><%= alert %></strong>
+        </div>
+      <% end %>
+      <% if notice.present? %>
+        <div class="alert alert-success alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><%= notice %></strong>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

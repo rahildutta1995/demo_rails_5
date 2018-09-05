@@ -18,4 +18,20 @@
 	border: 1px solid #0000044d;
 	padding: 10px;
 	width: 60%; 
+	border-radius: 5px;
+}
+.navbar-inverse{
+	position:fixed;
+	border-radius: 0px !important;
+}
+.main{
+	margin:10px;
+}
+.links,.links:hover,.link:focus{
+	text-decoration: none;
+	background: #0002;
+	font-weight: bold;
+}
+.container{
+	width: 468px !important;
 }
