@@ -20,17 +20,19 @@
 	width: 60%; 
 	border-radius: 5px;
 }
-.navbar-inverse{
+.navbar{
 	position:fixed;
+	width: 100% !important;
 	border-radius: 0px !important;
 }
 .main{
 	margin:10px;
 }
-.links,.links:hover,.link:focus{
+a,a:hover,a:focus{
 	text-decoration: none;
-	background: #0002;
 	font-weight: bold;
+	background: white;
+	color: black;
 }
 .container{
 	width: 468px !important;

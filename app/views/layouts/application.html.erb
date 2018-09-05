@@ -16,13 +16,17 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
+        <% if current_user.present? %>
+          <a class="navbar-brand" href="/users/<%=current_user.id%>">WebSiteName</a>
+        <% else %>
           <a class="navbar-brand" href="/">WebSiteName</a>
+          <% end %>
         </div>
         <ul class="nav navbar-nav">
           <li><a href="#">Home</a></li>
-          <li><a href="/sign_up">Sign Up</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="/sign_up">Sign Up</a></li>
           <li>
             <% if logged_in? %>
               <%= link_to "Logout" ,"/logout",method: :delete%>
