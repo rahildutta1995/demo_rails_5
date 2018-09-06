@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = User.new(user_params) 
       if @user.save
-        login @user
+        log_in @user
+        remember @user
         redirect_to root_url
         flash[:notice] = "Welcome to the sample app"
       else
@@ -51,7 +52,6 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-
     @user.destroy
     @user.microposts.destroy_all
     respond_to do |format|

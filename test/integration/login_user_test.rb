@@ -7,6 +7,7 @@ class LoginUserTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:Rahil)    
   end
+  
 
   test "login invalid user" do
   	get login_path
@@ -42,5 +43,20 @@ class LoginUserTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]",login_path
     assert_select "a[href=?]",logout_path,count: 0
     assert_select "a[href=?]", user_path(@user),count: 0
+  end
+
+  test "authenticated? should return false for a user with nil digest(password)" do
+    assert_not @user.authenticate('')
+  end
+
+  test "login with remember_me" do
+    log_in_as(@user,remember_me: "1")
+    assert_not_empty cookies['remember_token']
+  end
+  
+  test "login without remember me" do 
+    log_in_as(@user,remember_me: '1')
+    log_in_as(@user,remember_me: '0')
+    assert_empty cookies['remember_token']
   end
 end

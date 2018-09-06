@@ -26,7 +26,11 @@
           <li><a href="#">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/sign_up">Sign Up</a></li>
+          <li>
+          <% if !logged_in? %>
+            <a href="/sign_up">Sign Up</a>
+          <% end %>
+          </li>
           <li>
             <% if logged_in? %>
               <%= link_to "Logout" ,"/logout",method: :delete%>
